@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Porodoro
 {
@@ -20,9 +21,29 @@ namespace Porodoro
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int time = 90;
+        private DispatcherTimer timer;
         public MainWindow()
         {
             InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        void Timer_Tick(object sender, EventArgs e)
+        {
+            if (time > 0)
+            {
+                time--;
+                Timer.Text = string.Format("0{0}:{1}", time / 60, time % 60);
+            }
+            else
+            {
+                timer.Stop();
+                MessageBox.Show("Fini !");
+            }
         }
     }
 }
