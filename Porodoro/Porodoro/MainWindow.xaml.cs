@@ -28,31 +28,14 @@ namespace Porodoro
             InitializeComponent();
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Tick += Timer_Tick;
             timer.Start();
         }
 
-        void Timer_Tick(object sender, EventArgs e)
+        private void NavToPlanning(object sender, RoutedEventArgs e)
         {
-            if (time > 0)
-            {
-                time--;
-                Timer.Text = string.Format("{0}:{1}", time / 60, time % 60);
-            }
-            else
-            {
-                timer.Stop();
-                MessageBox.Show("Fini !");
-            }
-        }
-
-        void Start(object sender, EventArgs e)
-        {
-            timer.Start();
-        }
-        void Pause(object sender, EventArgs e)
-        {
-            timer.Stop();
+            Planning planning = new Planning();
+            Main.NavigationService.Navigate(planning);
+            Navigate.Visibility = Visibility.Hidden;
         }
     }
 }
