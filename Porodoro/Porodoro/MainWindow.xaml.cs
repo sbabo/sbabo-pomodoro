@@ -21,7 +21,7 @@ namespace Porodoro
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int time = 90;
+        private int time = 1500;
         private DispatcherTimer timer;
         public MainWindow()
         {
@@ -37,13 +37,22 @@ namespace Porodoro
             if (time > 0)
             {
                 time--;
-                Timer.Text = string.Format("0{0}:{1}", time / 60, time % 60);
+                Timer.Text = string.Format("{0}:{1}", time / 60, time % 60);
             }
             else
             {
                 timer.Stop();
                 MessageBox.Show("Fini !");
             }
+        }
+
+        void Start(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
+        void Pause(object sender, EventArgs e)
+        {
+            timer.Stop();
         }
     }
 }

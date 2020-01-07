@@ -10,7 +10,18 @@
         <Button>Hello World</Button>
     </StackPanel>-->
     <Grid>
-        <Label Content="Porodoro" FontFamily="Segoe UI" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"></Label>
-        <TextBlock Name="Timer" Width="300" Height="150" TextAlignment="Center" FontSize="70" FontFamily="Segoe UI Light"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="264*"/>
+            <RowDefinition Height="155*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="79*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Porodoro" FontFamily="Segoe UI" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2"></Label>
+        <TextBlock Name="Timer" Width="300" Height="150" TextAlignment="Center" FontSize="70" FontFamily="Segoe UI Light" Grid.Column="1" Margin="86,134,246,135" Grid.RowSpan="2"></TextBlock>
+        <Button Click="Pause" Content="Pause" Grid.Column="1" Margin="291,0,184,104" Grid.Row="1"/>
+        <Button Click="Start" Content="Start" Margin="101,0,374,104" Grid.Column="1" Grid.Row="1"/>
     </Grid>
+
 </Window>
