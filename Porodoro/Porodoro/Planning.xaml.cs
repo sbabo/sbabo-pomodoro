@@ -20,6 +20,8 @@ namespace Porodoro
     /// </summary>
     public partial class Planning : Page
     {
+        string str;
+
         public Planning()
         {
             InitializeComponent();
@@ -27,7 +29,8 @@ namespace Porodoro
 
         private void NavToTimer(object sender, RoutedEventArgs e)
         {
-            Timer timer = new Timer();
+            str = Title.Text;
+            Timer timer = new Timer(str);
             if(NavigationService.CanGoBack) { this.NavigationService.RemoveBackEntry(); }
             this.NavigationService.Navigate(timer);
         }

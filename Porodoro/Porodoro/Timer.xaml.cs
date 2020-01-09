@@ -23,10 +23,15 @@ namespace Porodoro
     {
         private int time = 1500;
         private DispatcherTimer timers;
-        public Timer()
+        private string titlePomodoro;
+
+        public Timer(string title)
         {
+            titlePomodoro = title;
+            //Console.WriteLine(Task.Content);
             ShowsNavigationUI = false;
             InitializeComponent();
+            Task.Text = titlePomodoro;
             timers = new DispatcherTimer();
             timers.Interval = new TimeSpan(0, 0, 1);
             timers.Tick += Timer_Tick;

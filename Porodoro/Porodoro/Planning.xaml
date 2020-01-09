@@ -9,8 +9,10 @@
       Title="Planning">
 
     <Grid>
-        <TextBlock Text="Planning"/>
+        <TextBlock Text="Planning" Foreground="#FFDA2D2D" Background="#FF2C2F33"/>
+        
         <Button Content="Test" Width="175" Height="50" Click="NavToTimer"></Button>
+        <TextBox Height="23" TextWrapping="Wrap" Name="Title" Text="" VerticalAlignment="Center" Width="120" Margin="0,0,0,124"/>
 
     </Grid>
 </Page>
