@@ -21,11 +21,12 @@ namespace Porodoro
     public partial class Planning : Page
     {
         string str;
+        string tag;
+        List<Pomodoro> items = new List<Pomodoro>();
 
         public Planning()
         {
             InitializeComponent();
-            List<Pomodoro> items = new List<Pomodoro>();
             items.Add(new Pomodoro { Title = "Clientèle", Count = 3, Tags = "Client" });
             items.Add(new Pomodoro { Title = "Comptabilité", Count = 1, Tags = "Compta" });
             items.Add(new Pomodoro { Title = "Développement", Count = 9, Tags = "Dev" });
@@ -34,10 +35,21 @@ namespace Porodoro
 
         private void NavToTimer(object sender, RoutedEventArgs e)
         {
-            str = Title.Text;
+            str = Pomodoro.Text;
             Timer timer = new Timer(str);
             if(NavigationService.CanGoBack) { this.NavigationService.RemoveBackEntry(); }
             this.NavigationService.Navigate(timer);
+        }
+
+        private void AddPomodoro(object sender, RoutedEventArgs e)
+        {
+            str = Pomodoro.Text;
+            tag = Tags.Text;
+            items.Add(new Pomodoro { Title = str, Count = 0, Tags = tag });
+            PomodoroList.ItemsSource = items;
+            Console.WriteLine("Add pomodoro");
+            Console.WriteLine(str);
+            Console.WriteLine(tag);
         }
     }
 }
