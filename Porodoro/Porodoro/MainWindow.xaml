@@ -9,9 +9,9 @@
     <!--<StackPanel HorizontalAlignment="Left">
         <Button>Hello World</Button>
     </StackPanel>-->
-    <Grid>
+    <Grid Background="#FF2C2F33">
         <Frame x:Name="Main" Content="Pomodoro"/>
-        <Button x:Name="Navigate" Content="Start using myPomodoro..." Width="175" Height="50" Click="NavToPlanning"></Button>
+        <Button x:Name="Navigate" Style="{StaticResource btnBlue}" Content="Start using myPomodoro..." Width="175" Height="50" Click="NavToPlanning"></Button>
     </Grid>
 
 </Window>

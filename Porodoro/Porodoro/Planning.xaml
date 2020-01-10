@@ -8,11 +8,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Planning">
 
-    <Grid>
-        <TextBlock Text="Planning" Foreground="#FFDA2D2D" Background="#FF2C2F33"/>
-        
-        <Button Content="Test" Width="175" Height="50" Click="NavToTimer"></Button>
-        <TextBox Height="23" TextWrapping="Wrap" Name="Title" Text="" VerticalAlignment="Center" Width="120" Margin="0,0,0,124"/>
+    <Grid Background="#FF2C2F33">
+        <DataGrid VerticalAlignment="Stretch" AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Auto"></DataGrid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Planning" Foreground="#FFDA2D2D" />
+
+        <TextBox Grid.Column="2" Height="23" TextWrapping="Wrap" Name="Title" Text="" VerticalAlignment="Center" Width="120" Margin="0,0,0,124"/>
+        <Button Grid.Column="2" Style="{StaticResource btnBlue}" Content="Start" Width="175" Height="50" Click="NavToTimer"></Button>
 
     </Grid>
 </Page>
