@@ -21,7 +21,7 @@ namespace Porodoro
     /// </summary>
     public partial class Timer : Page
     {
-        private int time = 10;
+        private int time = 1500;
         private DispatcherTimer timers;
         private string titlePomodoro;
         private int pomodori = 1;
@@ -31,15 +31,13 @@ namespace Porodoro
         public Timer(string title)
         {
             titlePomodoro = title;
-            //Console.WriteLine(Task.Content);
             ShowsNavigationUI = false;
             InitializeComponent();
             Task.Text = titlePomodoro;
             timers = new DispatcherTimer();
             timers.Interval = new TimeSpan(0, 0, 1);
             timers.Tick += Timer_Tick;
-            Pomodori.Text = $"{pomodori}/4";
-            //            timers.Start();
+            Step.Text = $"{pomodori}/4";
         }
 
 
@@ -69,7 +67,10 @@ namespace Porodoro
                         Console.Beep();
                     }
                     MessageBox.Show("C'est l'heure de la pause !");
-                    setTime(5);
+                    Step.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#98FB98"));
+                    Task.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#98FB98"));
+                    doTimer.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#98FB98"));
+                    setTime(300);
                     pause = true;
                     pomodori += 1;
                 }
@@ -80,7 +81,7 @@ namespace Porodoro
                         Console.Beep();
                     }
                     MessageBox.Show("Session terminer. Pause de 15 minutes ! :)");
-                    setTime(15);
+                    setTime(900);
                     pause = true;
                     pomodori += 1;
                 }
@@ -93,9 +94,12 @@ namespace Porodoro
                     Console.Beep();
                 }
                 MessageBox.Show("Il faut retourné travailler !");
-                setTime(10);
+                setTime(1500);
                 pause = false;
-                Pomodori.Text = $"{pomodori}/4";
+                Step.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDA2D2D"));
+                Task.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDA2D2D"));
+                doTimer.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFDA2D2D"));
+                Step.Text = $"{pomodori}/4";
                 timers.Start();
             }
         }

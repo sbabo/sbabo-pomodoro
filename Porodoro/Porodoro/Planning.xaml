@@ -9,16 +9,24 @@
       Title="Planning">
 
     <Grid Background="#FF2C2F33">
-        <DataGrid VerticalAlignment="Stretch" AutoGenerateColumns="False"
-                          VerticalScrollBarVisibility="Auto"></DataGrid>
+        <TextBox Grid.Column="2" Height="23" TextWrapping="Wrap" Name="Title" Text="" VerticalAlignment="Center" Width="120" Margin="0,0,0,124"/>
+        <Button Grid.Column="2" Style="{StaticResource btnBlue}" Content="Start" Width="175" Height="50" Click="NavToTimer"></Button>
+        <ListView MouseDoubleClick="NavToTimer" Name="PomodoroList" Background="OrangeRed">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Pomodoro" DisplayMemberBinding="{Binding Title}"></GridViewColumn>
+                    <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}"></GridViewColumn>
+                    <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Tags}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Planning" Foreground="#FFDA2D2D" />
 
-        <TextBox Grid.Column="2" Height="23" TextWrapping="Wrap" Name="Title" Text="" VerticalAlignment="Center" Width="120" Margin="0,0,0,124"/>
-        <Button Grid.Column="2" Style="{StaticResource btnBlue}" Content="Start" Width="175" Height="50" Click="NavToTimer"></Button>
+
 
     </Grid>
 </Page>

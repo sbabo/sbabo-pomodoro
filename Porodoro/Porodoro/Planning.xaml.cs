@@ -25,6 +25,11 @@ namespace Porodoro
         public Planning()
         {
             InitializeComponent();
+            List<Pomodoro> items = new List<Pomodoro>();
+            items.Add(new Pomodoro { Title = "Clientèle", Count = 3, Tags = "Client" });
+            items.Add(new Pomodoro { Title = "Comptabilité", Count = 1, Tags = "Compta" });
+            items.Add(new Pomodoro { Title = "Développement", Count = 9, Tags = "Dev" });
+            PomodoroList.ItemsSource = items;
         }
 
         private void NavToTimer(object sender, RoutedEventArgs e)
