@@ -64,12 +64,21 @@ namespace Porodoro
             if (pomodori <= 4 && !pause) {
                 if (pomodori < 4)
                 {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        Console.Beep();
+                    }
                     MessageBox.Show("C'est l'heure de la pause !");
                     setTime(5);
                     pause = true;
                     pomodori += 1;
-                } else
+                }
+                else
                 {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        Console.Beep();
+                    }
                     MessageBox.Show("Session terminer. Pause de 15 minutes ! :)");
                     setTime(15);
                     pause = true;
@@ -79,6 +88,10 @@ namespace Porodoro
             }
             else if (pomodori < 5 && pause)
             {
+                for (int i = 0; i < 7; i++)
+                {
+                    Console.Beep();
+                }
                 MessageBox.Show("Il faut retourné travailler !");
                 setTime(10);
                 pause = false;
