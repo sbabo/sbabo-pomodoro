@@ -21,9 +21,12 @@ namespace Porodoro
     /// </summary>
     public partial class Timer : Page
     {
-        private int time = 1500;
+        private int time = 10;
         private DispatcherTimer timers;
         private string titlePomodoro;
+        private int pomodori = 1;
+        private Boolean pause = false;
+        private Boolean end = false;
 
         public Timer(string title)
         {
@@ -35,7 +38,8 @@ namespace Porodoro
             timers = new DispatcherTimer();
             timers.Interval = new TimeSpan(0, 0, 1);
             timers.Tick += Timer_Tick;
-            timers.Start();
+            Pomodori.Text = $"{pomodori}/4";
+            //            timers.Start();
         }
 
 
@@ -49,7 +53,37 @@ namespace Porodoro
             else
             {
                 timers.Stop();
-                MessageBox.Show("Fini !");
+                restart();
+            }
+        }
+
+        void restart()
+        {
+            Console.WriteLine(pomodori);
+            Console.WriteLine(pause);
+            if (pomodori <= 4 && !pause) {
+                if (pomodori < 4)
+                {
+                    MessageBox.Show("C'est l'heure de la pause !");
+                    setTime(5);
+                    pause = true;
+                    pomodori += 1;
+                } else
+                {
+                    MessageBox.Show("Session terminer. Pause de 15 minutes ! :)");
+                    setTime(15);
+                    pause = true;
+                    pomodori += 1;
+                }
+                timers.Start();
+            }
+            else if (pomodori < 5 && pause)
+            {
+                MessageBox.Show("Il faut retourné travailler !");
+                setTime(10);
+                pause = false;
+                Pomodori.Text = $"{pomodori}/4";
+                timers.Start();
             }
         }
 
@@ -60,6 +94,11 @@ namespace Porodoro
         void doPause(object sender, EventArgs e)
         {
             timers.Stop();
+        }
+
+        void setTime(int duration)
+        {
+            time = duration;
         }
     }
 }

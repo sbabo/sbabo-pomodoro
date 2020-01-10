@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Timer">
 
-    <Grid>
+    <Grid Background="#FF2C2F33">
         <Grid.RowDefinitions>
             <RowDefinition Height="264*"/>
             <RowDefinition Height="155*"/>
@@ -17,9 +17,10 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="79*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Name="doTimer" Width="300" Height="150" TextAlignment="Center" FontSize="70" FontFamily="Segoe UI Light" Grid.Column="1" Margin="86,134,246,135" Grid.RowSpan="2"></TextBlock>
+        <TextBlock Name="doTimer" Width="300" Height="150" TextAlignment="Center" FontSize="70" FontFamily="Segoe UI Light" Grid.Column="1" Margin="86,134,246,135" Grid.RowSpan="2" Foreground="#FFDA2D2D"></TextBlock>
         <Button Click="doPause" Content="Pause" Grid.Column="1" Margin="291,0,184,104" Grid.Row="1"/>
         <Button Click="doStart" Content="Start" Margin="101,0,374,104" Grid.Column="1" Grid.Row="1"/>
         <TextBlock Name="Task" Grid.Column="1" HorizontalAlignment="Left" Margin="244,54,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Pomodori" Grid.Column="1" HorizontalAlignment="Left" Margin="244,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Page>
